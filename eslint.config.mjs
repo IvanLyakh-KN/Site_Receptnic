@@ -31,7 +31,7 @@ const config = [
     rules: {
       // Environment settings
       'react/react-in-jsx-scope': 'off', // Optional: if you're using React 17+
-      
+
       // Rules from ESLint recommended
       'unicorn/filename-case': [
         'error',
