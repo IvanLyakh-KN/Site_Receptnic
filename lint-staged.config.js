@@ -3,4 +3,5 @@ const config = {
     '*.{js,jsx,css}': ['prettier --write'],
 };
 
+
 module.exports = config;
