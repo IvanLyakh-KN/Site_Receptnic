@@ -1,12 +1,12 @@
-import globals from 'globals';
+import babelEslintParser from '@babel/eslint-parser'; // Import the parser
 import pluginJs from '@eslint/js';
+import pluginCypress from 'eslint-plugin-cypress';
+import pluginImport from 'eslint-plugin-import';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
-import pluginImport from 'eslint-plugin-import';
-import pluginUnicorn from 'eslint-plugin-unicorn';
-import pluginCypress from 'eslint-plugin-cypress';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import babelEslintParser from '@babel/eslint-parser'; // Import the parser
+import pluginUnicorn from 'eslint-plugin-unicorn';
+import globals from 'globals';
 
 const config = [
   {
@@ -64,6 +64,17 @@ const config = [
         },
       },
     },
+  },
+  {
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false,
+      "ecmaVersion": 2021,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
   },
   // Overrides for specific files
   {

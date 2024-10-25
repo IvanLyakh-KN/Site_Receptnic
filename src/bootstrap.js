@@ -6,4 +6,9 @@ import App from './App';
 const domElement = document.querySelector('#root');
 const root = createRoot(domElement);
 
-root.render(<App />);
+root.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+
+);

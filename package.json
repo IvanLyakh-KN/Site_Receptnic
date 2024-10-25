@@ -1,13 +1,13 @@
 {
-    "name": "course_3",
+    "name": "receptnic",
     "version": "0.0.0",
-    "description": "My awesome project",
+    "description": "",
     "main": "index.js",
     "scripts": {
         "start": "echo \"App has been started\" && exit 1",
-        "start:dev": "webpack serve -c config/webpack.development.config.js",
-        "build": "webpack build -c config/webpack.production.config.js",
-        "build:dev": "webpack build -c config/webpack.development.config.js",
+        "start:dev": "webpack serve -c config/webpack.dev.config.js",
+        "build": "webpack build -c config/webpack.prod.config.js",
+        "build:dev": "webpack build -c config/webpack.dev.config.js",
         "lint": "eslint ./src --max-warnings 0",
         "lint:fix": "eslint --fix src",
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,7 +19,7 @@
         "react",
         "react-dom"
     ],
-    "author": "romanbuchuk",
+    "author": "Ivan Lyakh",
     "license": "ISC",
     "dependencies": {
         "cypress": "^13.15.0",
