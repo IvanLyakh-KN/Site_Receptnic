@@ -1,10 +1,18 @@
 const bd = {
-    nav: [
-        { name: "naa", path: "#", id: 1 },
-        { name: "na2", path: "#", id: 2 },
-        { name: "na3", path: "#", id: 3 },
-        { name: "na4", path: "#", id: 4 },
+    user: [
+        { name: "Ivan Lyakh" }
+    ],
 
+    nav: [
+        { name: "Головна", path: "#", id: 1 },
+        { name: "Мої рецепти", path: "#", id: 2 },
+        { name: "Збережене", path: "#", id: 3 },
+        { name: "Вийти", path: "#", id: 4 },
+
+    ],
+
+    recipes: [
+        {img: '', name: 'Суп звичайний', tags: ['Українська кухня', 'Пісна страва', 'Суп'], cookingTime: '10', rate: 5, key: 1}
     ]
 }
 
