@@ -15,12 +15,13 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: {
-                                mode: 'local',
-                                localIdentName: '[name]__[local]',
-                                // namedExport: true, case 1;
-                                namedExport: false,
-                            },
+                            modules: false,
+                            // modules: {
+                            //     mode: 'local',
+                            //     localIdentName: '[name]__[local]',
+                            //     // namedExport: true, case 1;
+                            //     namedExport: false,
+                            // },
                         },
                     },
                 ],

@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 
 // import * as styles from './App.css'; case1
-import styles from './App.css';
+import './App.css';
 
 import db from "./bd/bd"
 import Navigation from "./components/navigation/navigation";

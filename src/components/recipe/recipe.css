@@ -1,0 +1,68 @@
+.recipe {
+    background-color: rgb(101, 103, 101);
+    max-width: 1400px;
+    display: flex;
+    height: 250px;
+    margin: 20px 0;
+    border-radius: 10px;
+    font-size: 18px;
+
+    /* margin: 0 auto; 
+       max-width: 1400px;
+        потім можна забрати
+    */
+}
+
+
+.recipe__img img {
+    width: 300px;
+    height: 210px;
+    margin: 20px 15px 20px 20px;
+    border-radius: 5px;
+}
+
+.recipe__titleAndTags {
+    padding: 20px 40px 0 0;
+}
+
+.recipe__title {
+    font-size: 36px;
+}
+
+.recipe__tags {
+    /* font-size: 16px; */
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.recipe__tag {
+    background-color: #33535F;
+    border-radius: 50px;
+    padding: 5px 10px;
+
+}
+
+.recipe__cookingTime {
+    background-color: #545454;
+    /* font-size: 16px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.recipe__rate {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 24px;
+    gap: 10px
+}
+
+.recipe__rateStar img {
+    height: 30px;
+}

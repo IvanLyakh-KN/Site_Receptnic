@@ -1,11 +1,11 @@
 import React from 'react'
-import styles from './navigation.module.css';
+import './navigation.css';
 const Navigation = ({ nav, user }) => {
 
     let navMenuLinks = nav.map((element) => {
         const { name, path, id } = element;
         return (
-            <li className={styles.navigation__link} key={id}>
+            <li className="navigation__link" key={id}>
                 <a href={path}
                 //onClick={(e) => { changePage(id, e); }}>
                 >
@@ -17,12 +17,12 @@ const Navigation = ({ nav, user }) => {
 
     return (
         <>
-            <div className={styles.navigation}>
-                <nav className={`${styles.navigationNav} ${styles.container}`}>
-                    <div className={styles.navigationUserName}>
+            <div className="navigation">
+                <nav className="navigationNav container">
+                    <div className="navigationUserName">
                         <a href='#'>{user[0].name}</a>
                     </div>
-                    <ul className={styles.navigationUl}>
+                    <ul className="navigationUl">
                         {navMenuLinks}
                     </ul>
                 </nav>
