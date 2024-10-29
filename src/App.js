@@ -1,32 +1,44 @@
-import React from 'react';
-import { Component } from 'react';
-
-// import * as styles from './App.css'; case1
+import React, { Component } from 'react';
 import './App.css';
 
-import db from "./bd/bd"
+import db from "./bd/bd";
 import Navigation from "./components/navigation/navigation";
-import Recipe from "./components/recipe/recipe";
+import MainPage from './pages/mainPage/mainPage';
+
 class App extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            nav: db.nav,
-            user: db.user,
-            recipes: db.recipes
+            currentPage: 1,
         }
     }
 
+    LoadedPage = (promoPage) => {
+        switch (this.state.currentPage) {
+            case 1:
+                return <MainPage promoPage={promoPage} ></MainPage>;
+            case 2:
+                return;
+            case 3:
+                return;
+            case 4:
+                return;
+            default:
+                return <MainPage></MainPage>;
+        }
+    }
     render() {
-        const data = this.state;
-        const { nav, user, recipes } = data;
+        const { nav, user, mainPage } = db;
+
         return (
             <div className="wrapper">
-                <Navigation nav={nav} user={user}></Navigation>
-                <Recipe recipes={recipes}></Recipe>
+                <Navigation nav={nav} user={user} />
+                <main>
+                    <MainPage mainPage={mainPage}></MainPage>
+                </main>
             </div>
-        )
-    }
+        );
+    };
 }
 export default App;

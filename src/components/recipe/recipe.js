@@ -13,7 +13,7 @@ const Recipes = ({ recipes }) => {
             return Array.from({ length: rate }, (_, i) => (
                 <div className="recipe__rateStar" key={i}>
                     {/* {<img src={require("../../asset/images/star.png")} alt="star" />} */}
-                    {<img src={"https://cdn-icons-png.flaticon.com/128/6869/6869563.png"} alt="star" />}
+                    <img src={"https://cdn-icons-png.flaticon.com/128/6869/6869563.png"} alt="star" />
                 </div>
                 // (_, i) it`s map where '_' means "undefined" 
             ))

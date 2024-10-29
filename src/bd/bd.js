@@ -10,10 +10,14 @@ const bd = {
         { name: "Вийти", path: "#", id: 4 },
 
     ],
+    mainPage: {
+        recipes: [
+            { img: '', name: 'Суп звичайний', tags: ['Українська кухня', 'Пісна страва', 'Суп'], cookingTime: '10', rate: 5, key: 1 },
+            { img: '', name: 'Суп звичайний', tags: ['Українська кухня', 'Пісна страва', 'Суп'], cookingTime: '10', rate: 5, key: 2 },
+        ],
 
-    recipes: [
-        {img: '', name: 'Суп звичайний', tags: ['Українська кухня', 'Пісна страва', 'Суп'], cookingTime: '10', rate: 5, key: 1}
-    ]
+        searchInput: { img: '', text: 'Я шукаю...', buttonText: 'Знайти' }
+    }
 }
 
 export default bd;
