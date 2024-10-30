@@ -1,0 +1,32 @@
+.main__search {
+    margin: 50px 0 20px 0;
+}
+
+.main__filter {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.main__filter button {
+    font-size: 24px;
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+.main__showMore-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.main__showMore-btn button {
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 20px 50px 20px 20px;
+    margin: 50px 0;
+}
+
+.main__recipes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

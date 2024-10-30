@@ -1,7 +1,6 @@
 .search__block form {
     display: flex;
     align-items: center;
-    margin-top: 10px;
 }
 
 .search__block input {
@@ -17,6 +16,7 @@
 }
 
 .search__button {
+    cursor: pointer;
     color: white;
     margin: -5px;
     height: 48px;

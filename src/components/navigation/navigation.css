@@ -21,7 +21,6 @@
     transition: font-weight 0.3s;
 }
 
-.navigationUl li a:hover {
+.activePage {
     font-weight: 900;
-
 }

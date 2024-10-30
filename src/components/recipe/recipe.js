@@ -41,6 +41,10 @@ const Recipes = ({ recipes }) => {
                     <p>Рейтинг:</p>
                     {rateRecipe(rate)}
                 </div>
+                <div className="addRecipe">
+                    <p>Додати в "Збережене"</p>
+                    <img src="https://cdn-icons-png.flaticon.com/128/6869/6869563.png" alt=''/>
+                </div>
             </div>
         );
     });

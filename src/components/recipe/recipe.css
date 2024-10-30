@@ -1,11 +1,13 @@
 .recipe {
     background-color: rgb(101, 103, 101);
     max-width: 1400px;
+    position: relative;
     display: flex;
+    overflow: hidden;
     height: 250px;
-    margin: 20px 0;
     border-radius: 10px;
     font-size: 18px;
+    cursor: pointer;
 
     /* margin: 0 auto; 
        max-width: 1400px;
@@ -66,4 +68,31 @@
 
 .recipe__rateStar img {
     height: 30px;
+}
+
+.addRecipe {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background-color: #30A663;
+    font-size: 18px;
+    border-radius: 0px 10px 10px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.addRecipe img {
+    height: 64px;
+    width: 64px;
+}
+
+.recipe:hover .addRecipe {
+    display: flex;
+    /* Display as flex when hovering over .recipe */
 }
