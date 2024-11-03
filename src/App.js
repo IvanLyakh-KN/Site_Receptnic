@@ -12,16 +12,16 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: 1,
+            currentPage: 2,
         }
     }
 
-    LoadedPage = (promoPage) => {
+    LoadedPage = (mainPage) => {
         switch (this.state.currentPage) {
             case 1:
-                return <MainPage promoPage={promoPage} ></MainPage>;
+                return <MainPage mainPage={mainPage} recipesDb={recipesDb}></MainPage>;
             case 2:
-                return <RecipePage promoPage={promoPage} ></RecipePage>;
+                return <RecipePage recipeComponents={recipesDb[0]} ></RecipePage>;
             case 3:
                 return;
             case 4:
@@ -38,7 +38,7 @@ class App extends Component {
             <div className="wrapper">
                 <Navigation nav={nav} user={user} />
                 <main>
-                    <MainPage mainPage={mainPage} recipesDb={recipesDb}></MainPage>
+                    {this.LoadedPage(mainPage)};
                 </main>
             </div>
         );
