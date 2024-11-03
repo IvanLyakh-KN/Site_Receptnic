@@ -26,7 +26,7 @@ const MainPage = ({ mainPage, recipesDb, openRecipePage }) => {
                     <Button text={'Фільтер'} clazz={'btn background-gray gray-text radius mediumPadding'} />
                 </div>
 
-                <div className="main__recipes">
+                <div className="main__recipes recipes">
                     <Recipes recipes={recipesDb.slice(0, visibleRecipesCount)} openRecipePage={openRecipePage} />
                 </div>
 

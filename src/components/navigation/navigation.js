@@ -1,34 +1,31 @@
-import React from 'react'
+import React from 'react';
 import './navigation.css';
-const Navigation = ({ nav, user }) => {
 
-    let navMenuLinks = nav.map((element) => {
-        const { name, path, id } = element;
-        return (
-            <li className="navigation__link" key={id}>
-                <a href={path}
-                //onClick={(e) => { changePage(id, e); }}>
-                >
-                    {name}
-                </a>
-            </li>
-        );
-    })
-
+const Navigation = ({ openMainPage, openMyRecipesPage }) => {
     return (
-        <>
-            <div className="navigation">
-                <nav className="navigationNav container">
-                    <div className="navigationUserName">
-                        <a href='#'>{user[0].name}</a>
-                    </div>
-                    <ul className="navigationUl">
-                        {navMenuLinks}
-                    </ul>
-                </nav>
-            </div>
-        </>
-    )
+        <div className="navigation">
+            <nav className="navigationNav container">
+                <div className="navigationUserName">
+                    <a href='#'>Ivan Lyakh</a>
+                </div>
+
+                <ul className="navigationUl">
+                    <li className="navigation__link">
+                        <a href="#" onClick={openMainPage}>Головна</a>
+                    </li>
+                    <li className="navigation__link">
+                        <a href="#" onClick={openMyRecipesPage}>Мої рецепти</a>
+                    </li>
+                    <li className="navigation__link">
+                        <a href="#">Збережене</a>
+                    </li>
+                    <li className="navigation__link">
+                        <a href="#">Вийти</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    );
 }
 
 export default Navigation;
