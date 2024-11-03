@@ -36,9 +36,9 @@ class App extends Component {
 
         return (
             <div className="wrapper">
-                <Navigation nav={nav} user={user} />
+                {/* <Navigation nav={nav} user={user} /> */}
                 <main>
-                    {this.LoadedPage(mainPage)};
+                    {this.LoadedPage(mainPage)}
                 </main>
             </div>
         );

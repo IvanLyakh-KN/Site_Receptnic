@@ -1,6 +1,6 @@
 const recipesDb = [
     {
-        img: '',
+        imgSrc: 'https://i.obozrevatel.com/food/recipemain/2019/2/28/gg.jpg?size=636x424',
         name: 'Гороховий суп',
         description: "Гороховий суп – це ситна та смачна страва, яка зігріє в холодну пору року",
         cookingTime: '10',
