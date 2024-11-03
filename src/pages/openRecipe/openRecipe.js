@@ -1,13 +1,17 @@
 import React from "react";
 import './openRecipe.css';
 
-const RecipePage = ({ recipeComponents }) => {
+const RecipePage = ({ recipeComponents, goBack }) => {
     const { imgSrc, name, description, cookingTime, ingredients, instructions, advices } = recipeComponents;
 
     return (
         <section className="openRecipe container">
             <div className="recipeView__img">
                 <img src={imgSrc} alt={name} />
+                <div className="recipeView__back" onClick={goBack}>
+                    <span className="recipeView__rowBack"></span>
+                    <p>Назад</p>
+                </div>
             </div>
             <div className="recipeView__text-body">
                 <div className="recipeView__title">

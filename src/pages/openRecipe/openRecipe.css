@@ -1,5 +1,5 @@
 .openRecipe {
-    background-color: rgb(255, 255, 255, 0.3);
+    background-color: rgb(255, 255, 255, 0.2);
     min-height: 100vh;
     height: auto;
     font-size: 24px;
@@ -64,8 +64,25 @@
     padding: 0 50px;
 }
 
-.recipeView__advices {}
-
 .recipeView__instructions {
     text-align: center;
+}
+
+.recipeView__back {
+    position: relative;
+    font-size: 50px;
+    padding-left: 60px;
+    margin: 80px 0 30px 60px;
+    cursor: pointer;
+}
+
+.recipeView__rowBack {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 50px solid rgb(255, 255, 255);
 }

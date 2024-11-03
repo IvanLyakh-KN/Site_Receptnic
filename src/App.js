@@ -3,9 +3,9 @@ import './App.css';
 
 import db from "./bd/bd";
 import recipesDb from './bd/recipesDb';
-import Navigation from "./components/navigation/navigation";
 import MainPage from './pages/mainPage/mainPage';
 import RecipePage from './pages/openRecipe/openRecipe';
+import Navigation from './components/navigation/navigation';
 
 class App extends Component {
 
@@ -16,12 +16,16 @@ class App extends Component {
         }
     }
 
+    switchToMainPage = () => {
+        this.setState({ currentPage: 1 });
+    }
+
     LoadedPage = (mainPage) => {
         switch (this.state.currentPage) {
             case 1:
-                return <MainPage mainPage={mainPage} recipesDb={recipesDb}></MainPage>;
+                return <MainPage mainPage={mainPage} recipesDb={recipesDb} />
             case 2:
-                return <RecipePage recipeComponents={recipesDb[0]} ></RecipePage>;
+                return <RecipePage recipeComponents={recipesDb[0]} goBack={this.switchToMainPage}></RecipePage>;
             case 3:
                 return;
             case 4:
@@ -36,7 +40,7 @@ class App extends Component {
 
         return (
             <div className="wrapper">
-                {/* <Navigation nav={nav} user={user} /> */}
+                {this.state.currentPage === 1 && <Navigation nav={nav} user={user} />}
                 <main>
                     {this.LoadedPage(mainPage)}
                 </main>
