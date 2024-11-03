@@ -11,12 +11,7 @@ const bd = {
 
     ],
     mainPage: {
-        recipes: [
-            { img: '', name: 'Суп звичайний', tags: ['Українська кухня', 'Пісна страва', 'Суп'], cookingTime: '10', rate: 5, key: 1 },
-            { img: '', name: 'Суп звичайний', tags: ['Українська кухня', 'Пісна страва', 'Суп'], cookingTime: '10', rate: 5, key: 2 },
-        ],
-
-        searchInput: { img: '', text: 'Я шукаю...', buttonText: 'Знайти' }
+      searchInput: { img: '', text: 'Я шукаю...', buttonText: 'Знайти' }
     }
 }
 

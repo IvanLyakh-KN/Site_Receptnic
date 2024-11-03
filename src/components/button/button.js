@@ -1,11 +1,13 @@
 import React from "react";
 import "./button.css";
 
-const Button = ({ text, clazz }) => {
+const Button = ({ text, clazz, onClick }) => {
     return (
-        <>
-            <button type="submit" className={clazz}>{text}</button>
-        </>
+        <button className={clazz} onClick={onClick}>
+            {text}
+        </button>
     );
-}
+};
+
 export default Button;
+

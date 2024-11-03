@@ -1,6 +1,7 @@
 .recipe {
-    background-color: rgb(101, 103, 101);
-    max-width: 1400px;
+    background-image: url('../../asset/images/recipe-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     display: flex;
     overflow: hidden;
@@ -8,11 +9,6 @@
     border-radius: 10px;
     font-size: 18px;
     cursor: pointer;
-
-    /* margin: 0 auto; 
-       max-width: 1400px;
-        потім можна забрати
-    */
 }
 
 
@@ -49,6 +45,7 @@
 
 .recipe__cookingTime {
     background-color: #545454;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
     /* font-size: 16px; */
     display: flex;
     flex-direction: column;
@@ -87,12 +84,13 @@
     display: none;
 }
 
-.addRecipe img {
+.addRecipe__img {
+    margin-top: 10px;
+    background: url('../../asset/images/bookmark-icon.svg');
     height: 64px;
     width: 64px;
 }
 
 .recipe:hover .addRecipe {
     display: flex;
-    /* Display as flex when hovering over .recipe */
 }

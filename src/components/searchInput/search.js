@@ -6,6 +6,7 @@ const Search = ({ searchInput }) => {
     return (
         <div className="search__block">
             <form className="form">
+                <span className="form__searchIcon"></span>
                 <input
                     type='text'
                     className="form__control"

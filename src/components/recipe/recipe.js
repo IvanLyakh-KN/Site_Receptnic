@@ -43,7 +43,8 @@ const Recipes = ({ recipes }) => {
                 </div>
                 <div className="addRecipe">
                     <p>Додати в "Збережене"</p>
-                    <img src="https://cdn-icons-png.flaticon.com/128/6869/6869563.png" alt=''/>
+                    {/* <img src="#" alt='' /> */}
+                    <span className="addRecipe__img"></span>
                 </div>
             </div>
         );

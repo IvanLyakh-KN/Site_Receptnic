@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import db from "./bd/bd";
+import recipesDb from './bd/recipesDb';
 import Navigation from "./components/navigation/navigation";
 import MainPage from './pages/mainPage/mainPage';
+import RecipePage from './pages/openRecipe/openRecipe';
 
 class App extends Component {
 
@@ -19,7 +21,7 @@ class App extends Component {
             case 1:
                 return <MainPage promoPage={promoPage} ></MainPage>;
             case 2:
-                return;
+                return <RecipePage promoPage={promoPage} ></RecipePage>;
             case 3:
                 return;
             case 4:
@@ -28,6 +30,7 @@ class App extends Component {
                 return <MainPage></MainPage>;
         }
     }
+
     render() {
         const { nav, user, mainPage } = db;
 
@@ -35,7 +38,7 @@ class App extends Component {
             <div className="wrapper">
                 <Navigation nav={nav} user={user} />
                 <main>
-                    <MainPage mainPage={mainPage}></MainPage>
+                    <MainPage mainPage={mainPage} recipesDb={recipesDb}></MainPage>
                 </main>
             </div>
         );

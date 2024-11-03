@@ -1,6 +1,7 @@
 .search__block form {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .search__block input {
@@ -13,6 +14,16 @@
     border-radius: 5px;
     border: none;
     outline: none;
+}
+
+.form__searchIcon {
+    position: absolute;
+    left: 5px;
+    background: url('../../asset/images/search-Icon.svg');
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 35px;
+    width: 44px;
 }
 
 .search__button {
