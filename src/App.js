@@ -6,12 +6,13 @@ import MainPage from './pages/mainPage/mainPage';
 import RecipePage from './pages/openRecipe/openRecipe';
 import MyRecipes from './pages/myRecipes/myRecipes';
 import Navigation from './components/navigation/navigation';
+import CreateRecipe from './pages/createRecipe/createRecipe';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: 3,
+            currentPage: 4,
             selectedRecipeIndex: null,
         };
     }
@@ -30,6 +31,9 @@ class App extends Component {
     switchToMainPage = () => {
         this.setState({ currentPage: 1 });
     }
+    openCreateRecipePage = () => {
+        this.setState({ currentPage: 4 });
+    }
 
     LoadedPage = (mainPage) => {
         switch (this.state.currentPage) {
@@ -45,7 +49,11 @@ class App extends Component {
             case 3:
                 // Відфільтровуємо рецепти, де myRecipe === true
                 const myRecipes = recipesDb.filter(recipe => recipe.myRecipe);
-                return <MyRecipes recipes={myRecipes} openRecipePage={this.openRecipePage} />;
+                return <MyRecipes recipes={myRecipes} openRecipePage={this.openRecipePage}
+                    openCreateRecipePage={this.openCreateRecipePage}
+                />;
+            case 4:
+                return <CreateRecipe openMyRecipesPage={this.openMyRecipesPage}></CreateRecipe>;
             default:
                 return <MainPage />;
         }

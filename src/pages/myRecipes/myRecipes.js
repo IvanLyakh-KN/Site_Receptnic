@@ -3,7 +3,7 @@ import Recipes from "../../components/recipe/recipe"; // Використову�
 import './myRecipes.css';
 import Button from "../../components/button/button";
 
-const MyRecipes = ({ recipes, openRecipePage }) => {
+const MyRecipes = ({ recipes, openRecipePage, openCreateRecipePage }) => {
     const [visibleRecipesCount, setVisibleRecipesCount] = useState(2);
 
     const showMoreRecipes = () => {
@@ -12,7 +12,7 @@ const MyRecipes = ({ recipes, openRecipePage }) => {
     return (
         <article className="myRecipes">
             <section className="container">
-                <div className="myRecipes__createRecipe">
+                <div className="myRecipes__createRecipe" onClick={openCreateRecipePage}>
                     <span className="myRecipes__plusIcon"></span>
                     <p>Створити рецепт</p>
                 </div>
