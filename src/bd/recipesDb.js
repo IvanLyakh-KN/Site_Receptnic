@@ -20,7 +20,8 @@ const recipesDb = [
         ],
         tags: ['Українська кухня', 'Пісна страва', 'Суп'],
         rate: 5,
-        key: 2
+        key: 2,
+        myRecipe: true
     },
 
 ];

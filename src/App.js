@@ -6,16 +6,21 @@ import recipesDb from './bd/recipesDb';
 import MainPage from './pages/mainPage/mainPage';
 import RecipePage from './pages/openRecipe/openRecipe';
 import Navigation from './components/navigation/navigation';
-
 class App extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: 2,
-        }
+            currentPage: 1,
+            selectedRecipeIndex: null, // Зберігаємо індекс обраного рецепта
+        };
     }
 
+    // Функція для переходу на сторінку з обраним рецептом
+    openRecipePage = (index) => {
+        this.setState({ currentPage: 2, selectedRecipeIndex: index });
+    }
+
+    // Функція для повернення на головну сторінку
     switchToMainPage = () => {
         this.setState({ currentPage: 1 });
     }
@@ -23,15 +28,16 @@ class App extends Component {
     LoadedPage = (mainPage) => {
         switch (this.state.currentPage) {
             case 1:
-                return <MainPage mainPage={mainPage} recipesDb={recipesDb} />
+                return <MainPage mainPage={mainPage} recipesDb={recipesDb} openRecipePage={this.openRecipePage} />;
             case 2:
-                return <RecipePage recipeComponents={recipesDb[0]} goBack={this.switchToMainPage}></RecipePage>;
-            case 3:
-                return;
-            case 4:
-                return;
+                return (
+                    <RecipePage
+                        recipeComponents={recipesDb[this.state.selectedRecipeIndex]} // Передаємо обраний рецепт
+                        goBack={this.switchToMainPage}
+                    />
+                );
             default:
-                return <MainPage></MainPage>;
+                return <MainPage />;
         }
     }
 
@@ -46,6 +52,6 @@ class App extends Component {
                 </main>
             </div>
         );
-    };
+    }
 }
 export default App;
