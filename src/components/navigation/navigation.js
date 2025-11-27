@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './navigation.css';
 
 const Navigation = ({ openMainPage, openMyRecipesPage }) => {
@@ -11,16 +13,10 @@ const Navigation = ({ openMainPage, openMyRecipesPage }) => {
 
                 <ul className="navigationUl">
                     <li className="navigation__link">
-                        <a href="#" onClick={openMainPage}>Головна</a>
+                        <Link to='/'>Головна</Link>
                     </li>
                     <li className="navigation__link">
-                        <a href="#" onClick={openMyRecipesPage}>Мої рецепти</a>
-                    </li>
-                    <li className="navigation__link">
-                        <a href="#">Збережене</a>
-                    </li>
-                    <li className="navigation__link">
-                        <a href="#">Вийти</a>
+                        <Link to="/my-recipes" >Мої рецепти</Link>
                     </li>
                 </ul>
             </nav>

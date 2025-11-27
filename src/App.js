@@ -1,76 +1,59 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+
 import db from "./bd/bd";
 import recipesDb from './bd/recipesDb';
+
 import MainPage from './pages/mainPage/mainPage';
 import RecipePage from './pages/openRecipe/openRecipe';
 import MyRecipes from './pages/myRecipes/myRecipes';
 import Navigation from './components/navigation/navigation';
 import CreateRecipe from './pages/createRecipe/createRecipe';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentPage: 4,
-            selectedRecipeIndex: null,
-        };
-    }
+function App() {
+    const { mainPage } = db;
 
-    // Функція для переходу на сторінку рецепта за індексом
-    openRecipePage = (index) => {
-        this.setState({ currentPage: 2, selectedRecipeIndex: index });
-    }
-
-    // Функція для переходу на сторінку Мої рецепти
-    openMyRecipesPage = () => {
-        this.setState({ currentPage: 3 });
-    }
-
-    // Функція для повернення на головну сторінку
-    switchToMainPage = () => {
-        this.setState({ currentPage: 1 });
-    }
-    openCreateRecipePage = () => {
-        this.setState({ currentPage: 4 });
-    }
-
-    LoadedPage = (mainPage) => {
-        switch (this.state.currentPage) {
-            case 1:
-                return <MainPage mainPage={mainPage} recipesDb={recipesDb} openRecipePage={this.openRecipePage} />;
-            case 2:
-                return (
-                    <RecipePage
-                        recipeComponents={recipesDb[this.state.selectedRecipeIndex]}
-                        goBack={this.switchToMainPage}
-                    />
-                );
-            case 3:
-                // Відфільтровуємо рецепти, де myRecipe === true
-                const myRecipes = recipesDb.filter(recipe => recipe.myRecipe);
-                return <MyRecipes recipes={myRecipes} openRecipePage={this.openRecipePage}
-                    openCreateRecipePage={this.openCreateRecipePage}
-                />;
-            case 4:
-                return <CreateRecipe openMyRecipesPage={this.openMyRecipesPage}></CreateRecipe>;
-            default:
-                return <MainPage />;
-        }
-    }
-
-    render() {
-        const { nav, user, mainPage } = db;
-
-        return (
+    return (
+        <Router>
             <div className="wrapper">
-                {(this.state.currentPage === 1 || this.state.currentPage == 3) && <Navigation openMainPage={this.switchToMainPage} openMyRecipesPage={this.openMyRecipesPage} />}
+
+                {/* Navigation показуємо не на всіх сторінках */}
+                <Route exact path={["/", "/my-recipes"]}>
+                    <Navigation />
+                </Route>
+
                 <main>
-                    {this.LoadedPage(mainPage)}
+                    <Switch>
+
+                        {/* ГОЛОВНА СТОРІНКА */}
+                        <Route exact path="/">
+                            <MainPage
+                                mainPage={mainPage}
+                                recipesDb={recipesDb}
+                            />
+                        </Route>
+
+                        {/* СТОРІНКА РЕЦЕПТА */}
+                        <Route path="/recipe/:id">
+                            <RecipePage recipesDb={recipesDb} />
+                        </Route>
+
+                        {/* МОЇ РЕЦЕПТИ */}
+                        <Route path="/my-recipes">
+                            <MyRecipes recipes={recipesDb.filter(r => r.myRecipe)} />
+                        </Route>
+
+                        {/* СТОРІНКА СТВОРЕННЯ РЕЦЕПТА */}
+                        <Route path="/create-recipe">
+                            <CreateRecipe />
+                        </Route>
+
+                    </Switch>
                 </main>
             </div>
-        );
-    }
+        </Router>
+    );
 }
 
 export default App;

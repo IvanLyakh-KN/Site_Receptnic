@@ -1,14 +1,22 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import recipesDb from "../../bd/recipesDb";
 import './openRecipe.css';
 
-const RecipePage = ({ recipeComponents, goBack }) => {
+const RecipePage = () => {
+    const { id } = useParams();
+    const recipeComponents = recipesDb[Number(id)];
+
+    // Якщо рецепт не знайдено
+    if (!recipeComponents) return <div>Рецепт не знайдено</div>;
+
     const { imgSrc, name, description, cookingTime, ingredients, instructions, advices } = recipeComponents;
 
     return (
         <section className="openRecipe container">
             <div className="recipeView__img">
                 <img src={imgSrc} alt={name} />
-                <div className="recipeView__back" onClick={goBack}>
+                <div className="recipeView__back">
                     <span className="recipeView__rowBack"></span>
                     <p>Назад</p>
                 </div>
@@ -33,7 +41,6 @@ const RecipePage = ({ recipeComponents, goBack }) => {
                 </div>
             </div>
             <div className="recipeView__text-body_fullWidth">
-
                 <div className="recipeView__instructions">
                     <h3 className="bold">Приготування:</h3>
                     <ul>
@@ -42,7 +49,6 @@ const RecipePage = ({ recipeComponents, goBack }) => {
                         ))}
                     </ul>
                 </div>
-
                 <div className="recipeView__advices center">
                     <h4 className="bold">Поради:</h4>
                     <ul>
@@ -56,4 +62,5 @@ const RecipePage = ({ recipeComponents, goBack }) => {
         </section>
     );
 }
+
 export default RecipePage;

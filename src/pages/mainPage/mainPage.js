@@ -4,7 +4,7 @@ import Search from "../../components/searchInput/search";
 import Recipes from '../../components/recipe/recipe';
 import Button from "../../components/button/button";
 
-const MainPage = ({ mainPage, recipesDb, openRecipePage }) => {
+const MainPage = ({ mainPage, recipesDb }) => {
     const { searchInput } = mainPage;
 
     const [visibleRecipesCount, setVisibleRecipesCount] = useState(2);
@@ -27,7 +27,7 @@ const MainPage = ({ mainPage, recipesDb, openRecipePage }) => {
                 </div>
 
                 <div className="main__recipes recipes">
-                    <Recipes recipes={recipesDb.slice(0, visibleRecipesCount)} openRecipePage={openRecipePage} />
+                    <Recipes recipes={recipesDb.slice(0, visibleRecipesCount)} />
                 </div>
 
                 {visibleRecipesCount < recipesDb.length && (

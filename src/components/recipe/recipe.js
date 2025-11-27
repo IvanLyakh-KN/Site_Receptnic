@@ -1,7 +1,9 @@
 import React from "react";
 import "./recipe.css";
+import { Link } from "react-router-dom";
 
-const Recipes = ({ recipes, openRecipePage }) => {
+
+const Recipes = ({ recipes }) => {
     return recipes.map((recipe, index) => {
         const { imgSrc, name, tags, cookingTime, rate, key } = recipe;
 
@@ -18,35 +20,37 @@ const Recipes = ({ recipes, openRecipePage }) => {
         }
 
         return (
-            <div
-                className="recipe"
+            <Link
                 key={key}
-                onClick={() => openRecipePage(index)} // Передаємо індекс у функцію
+                to={`/recipe/${index}`}
             >
-                <div className="recipe__img">
-                    <img src={imgSrc} alt={name} />
-                </div>
-                <div className="recipe__titleAndTags">
-                    <div className="recipe__title">
-                        <p className="recipe__title">{name}</p>
+
+                <div className="recipe">
+                    <div className="recipe__img">
+                        <img src={imgSrc} alt={name} />
                     </div>
-                    <div className="recipe__tags">
-                        {recipeTags}
+                    <div className="recipe__titleAndTags">
+                        <div className="recipe__title">
+                            <p className="recipe__title">{name}</p>
+                        </div>
+                        <div className="recipe__tags">
+                            {recipeTags}
+                        </div>
+                    </div>
+                    <div className="recipe__cookingTime">
+                        <p>Час приготування:</p>
+                        <p>~ {cookingTime} хв</p>
+                    </div>
+                    <div className="recipe__rate">
+                        <p>Рейтинг:</p>
+                        {rateRecipe(rate)}
+                    </div>
+                    <div className="addRecipe">
+                        <p>Додати в "Збережене"</p>
+                        <span className="addRecipe__img"></span>
                     </div>
                 </div>
-                <div className="recipe__cookingTime">
-                    <p>Час приготування:</p>
-                    <p>~ {cookingTime} хв</p>
-                </div>
-                <div className="recipe__rate">
-                    <p>Рейтинг:</p>
-                    {rateRecipe(rate)}
-                </div>
-                <div className="addRecipe">
-                    <p>Додати в "Збережене"</p>
-                    <span className="addRecipe__img"></span>
-                </div>
-            </div>
+            </Link>
         );
     });
 };
