@@ -4,6 +4,7 @@
     background-size: cover;
     position: relative;
     display: flex;
+    align-items: center;
     overflow: hidden;
     height: 250px;
     border-radius: 10px;
@@ -26,6 +27,8 @@
 
 .recipe__title {
     font-size: 36px;
+    width: 300px;
+    text-align: center;
 }
 
 .recipe__tags {
@@ -33,6 +36,7 @@
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
+
 }
 
 .recipe__tag {
@@ -52,6 +56,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    height: 100%;
     padding: 10px;
 }
 

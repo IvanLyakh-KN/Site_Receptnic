@@ -4,8 +4,7 @@ import Search from "../../components/searchInput/search";
 import Recipes from '../../components/recipe/recipe';
 import Button from "../../components/button/button";
 
-const MainPage = ({ mainPage, recipesDb }) => {
-    const { searchInput } = mainPage;
+const MainPage = ({ recipesDb }) => {
 
     const [visibleRecipesCount, setVisibleRecipesCount] = useState(2);
 
@@ -19,7 +18,7 @@ const MainPage = ({ mainPage, recipesDb }) => {
                 <div className="main__activeFilters"></div>
 
                 <div className="main__search">
-                    <Search searchInput={searchInput} />
+                    <Search />
                 </div>
 
                 <div className="main__filter">
@@ -27,8 +26,9 @@ const MainPage = ({ mainPage, recipesDb }) => {
                 </div>
 
                 <div className="main__recipes recipes">
-                    <Recipes recipes={recipesDb.slice(0, visibleRecipesCount)} />
-                </div>
+                    {recipesDb && recipesDb.length > 0 && (
+                        <Recipes recipes={recipesDb.slice(0, visibleRecipesCount)} />
+                    )}                </div>
 
                 {visibleRecipesCount < recipesDb.length && (
                     <div className="main__showMore-btn">

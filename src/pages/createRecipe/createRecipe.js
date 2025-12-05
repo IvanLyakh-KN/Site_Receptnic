@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import recipesDb from '../../bd/recipesDb'; // Імпортуємо базу даних для додавання нового рецепта
+import { Link } from 'react-router-dom'
+import usePostRecipe from '../../hooks/usePostRecipe.js';
 import './createRecipe.css';
 
-const CreateRecipe = ({ openMyRecipesPage }) => {
+const CreateRecipe = () => {
     const [name, setName] = useState('');
+    const [cookingTime, setCookingTime] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState(['']);
     const [instructions, setInstructions] = useState(['']);
     const [advices, setAdvices] = useState(['']);
     const [imgSrc, setImgSrc] = useState('');
+
+    const { isLoading, error, postData } = usePostRecipe();
 
     // Функція для динамічного додавання інгредієнтів
     const addIngredient = () => setIngredients([...ingredients, '']);
@@ -34,25 +38,30 @@ const CreateRecipe = ({ openMyRecipesPage }) => {
         setAdvices(newAdvices);
     };
 
-    // Зберігає рецепт у базу даних
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const newRecipe = {
             imgSrc,
             name,
             description,
-            cookingTime: '',
-            ingredients,
-            instructions,
-            advices,
+            cookingTime,
+            ingredients: ingredients.filter(i => i.trim() !== ''),
+            instructions: instructions.filter(i => i.trim() !== ''),
+            advices: advices.filter(a => a.trim() !== ''),
             tags: [],
             rate: 0,
             myRecipe: true,
-            key: recipesDb.length + 1
         };
 
-        recipesDb.push(newRecipe); // Додаємо рецепт у базу даних
-    };
+        try {
+            const savedRecipe = await postData(newRecipe);
 
+            console.log('Рецепт успішно додано:', savedRecipe);
+
+        } catch (err) {
+            console.error('Помилка: ', err.message);
+            alert(`Помилка: ${err.message}`);
+        }
+    };
     return (
         <section className='container create-recipe'>
             <div className="addRecipeImg">
@@ -110,6 +119,14 @@ const CreateRecipe = ({ openMyRecipesPage }) => {
                 ))}
                 <button type="button" onClick={addAdvice}>Додати пораду</button>
 
+                <label>Час приготування:</label>
+                <input
+                    type="text"
+                    value={cookingTime}
+                    onChange={(e) => setCookingTime(e.target.value)}
+                    placeholder="Вкажіть Час приготування"
+                />
+
                 <label>Додати URL зображення:</label>
                 <input
                     type="url"
@@ -117,10 +134,12 @@ const CreateRecipe = ({ openMyRecipesPage }) => {
                     onChange={(e) => setImgSrc(e.target.value)}
                     placeholder="Введіть URL зображення"
                 />
-                <button className="submit-btn" onClick={() => { openMyRecipesPage(); handleSubmit(); }}>Готово</button>
+                <Link to='/my-recipes'><button className="submit-btn" onClick={() => handleSubmit()}>Готово</button></Link>
             </div>
-        </section>
+        </section >
     );
 };
 
 export default CreateRecipe;
+
+

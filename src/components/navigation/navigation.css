@@ -12,6 +12,10 @@
     padding-left: 40px;
 }
 
+.navigationUl {
+    align-items: center;
+}
+
 .navigationUl li a,
 .navigationUserName a {
     text-decoration: none;
@@ -23,4 +27,12 @@
 
 .activePage {
     font-weight: 900;
+}
+
+.navigation__logout-btn {
+    background: transparent;
+    color: white;
+    font-size: 30px;
+    margin-top: 0px;
+    font-weight: 400;
 }

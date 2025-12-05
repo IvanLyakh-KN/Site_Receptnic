@@ -1,16 +1,35 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import recipesDb from "../../bd/recipesDb";
+import { useParams, Link } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
 import './openRecipe.css';
 
 const RecipePage = () => {
     const { id } = useParams();
-    const recipeComponents = recipesDb[Number(id)];
 
-    // Якщо рецепт не знайдено
-    if (!recipeComponents) return <div>Рецепт не знайдено</div>;
+    const {
+        data: recipes,
+        isLoading,
+        error
+    } = useFetch('http://localhost:5000/recipes');
 
-    const { imgSrc, name, description, cookingTime, ingredients, instructions, advices } = recipeComponents;
+    let recipe;
+
+    if (recipes) {
+        recipe = recipes[id];
+    }
+    if (isLoading) {
+        return <div className="openRecipe container">Завантаження рецепту...</div>;
+    }
+
+    if (error) {
+        return <div className="openRecipe container">Помилка завантаження: {error}</div>;
+    }
+
+    if (!recipe) {
+        return <div className="openRecipe container">Рецепт не знайдено</div>;
+    }
+
+    const { imgSrc, name, description, cookingTime, ingredients, instructions, advices } = recipe;
 
     return (
         <section className="openRecipe container">
@@ -18,7 +37,7 @@ const RecipePage = () => {
                 <img src={imgSrc} alt={name} />
                 <div className="recipeView__back">
                     <span className="recipeView__rowBack"></span>
-                    <p>Назад</p>
+                    <Link to="/"><p>Назад</p></Link>
                 </div>
             </div>
             <div className="recipeView__text-body">
@@ -34,7 +53,7 @@ const RecipePage = () => {
                 <div className="recipeView__ingredients">
                     <h3 className="bold">Інгредієнти:</h3>
                     <ul>
-                        {ingredients.map((ingredient, index) => (
+                        {ingredients && ingredients.map((ingredient, index) => (
                             <li key={index}>{ingredient}</li>
                         ))}
                     </ul>
@@ -44,7 +63,7 @@ const RecipePage = () => {
                 <div className="recipeView__instructions">
                     <h3 className="bold">Приготування:</h3>
                     <ul>
-                        {instructions.map((step, index) => (
+                        {instructions && instructions.map((step, index) => (
                             <li key={index}>{step}</li>
                         ))}
                     </ul>
@@ -52,7 +71,7 @@ const RecipePage = () => {
                 <div className="recipeView__advices center">
                     <h4 className="bold">Поради:</h4>
                     <ul>
-                        {advices.map((step, index) => (
+                        {advices && advices.map((step, index) => (
                             <li key={index}>{step}</li>
                         ))}
                     </ul>

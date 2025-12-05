@@ -12,7 +12,7 @@ const Recipes = ({ recipes }) => {
         )) : null;
 
         function rateRecipe(rate) {
-            return Array.from({ length: rate }, (_, i) => (
+            return Array.from({ length: 5 }, (_, i) => (
                 <div className="recipe__rateStar" key={i}>
                     <img src={"https://cdn-icons-png.flaticon.com/128/6869/6869563.png"} alt="star" />
                 </div>
@@ -20,23 +20,24 @@ const Recipes = ({ recipes }) => {
         }
 
         return (
-            <Link
-                key={key}
-                to={`/recipe/${index}`}
-            >
-
+            <>
                 <div className="recipe">
                     <div className="recipe__img">
                         <img src={imgSrc} alt={name} />
                     </div>
-                    <div className="recipe__titleAndTags">
-                        <div className="recipe__title">
-                            <p className="recipe__title">{name}</p>
+                    <Link
+                        key={key}
+                        to={`/recipe/${index}`}
+                    >
+                        <div className="recipe__titleAndTags">
+                            <div className="recipe__title">
+                                <p className="recipe__title">{name}</p>
+                            </div>
+                            <div className="recipe__tags">
+                                {recipeTags}
+                            </div>
                         </div>
-                        <div className="recipe__tags">
-                            {recipeTags}
-                        </div>
-                    </div>
+                    </Link>
                     <div className="recipe__cookingTime">
                         <p>Час приготування:</p>
                         <p>~ {cookingTime} хв</p>
@@ -49,8 +50,8 @@ const Recipes = ({ recipes }) => {
                         <p>Додати в "Збережене"</p>
                         <span className="addRecipe__img"></span>
                     </div>
-                </div>
-            </Link>
+                </div >
+            </>
         );
     });
 };
