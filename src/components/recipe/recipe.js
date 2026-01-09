@@ -46,10 +46,6 @@ const Recipes = ({ recipes }) => {
                         <p>Рейтинг:</p>
                         {rateRecipe(rate)}
                     </div>
-                    <div className="addRecipe">
-                        <p>Додати в "Збережене"</p>
-                        <span className="addRecipe__img"></span>
-                    </div>
                 </div >
             </>
         );

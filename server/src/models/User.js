@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
     login: {
         type: String,
         required: true,
-        unique: true, // Email має бути унікальним
+        unique: true,
     },
     password: {
         type: String,

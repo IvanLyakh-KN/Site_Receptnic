@@ -28,6 +28,7 @@
     width: 100%;
     border-bottom: 2px solid white;
     margin-bottom: 20px;
+    outline: none;
 }
 
 input[type="checkbox"] {
@@ -56,10 +57,10 @@ input[type="checkbox"]:checked+label::before {
 /* ( галочку ) */
 input[type="checkbox"]:checked+label::after {
     content: '\2713';
-    font-size: 16px;
+    font-size: 28px;
     position: absolute;
-    left: 22px;
-    top: 18px;
+    left: 12px;
+    top: 10px;
     color: #fff;
 }
 
@@ -73,6 +74,7 @@ input[type="checkbox"]:checked+label::after {
 .auth-form__inputs_checkbox label {
     font-size: 24px;
     cursor: pointer;
+    position: relative;
 }
 
 .auth-form button {
@@ -89,5 +91,5 @@ input[type="checkbox"]:checked+label::after {
     font-size: 24px;
     text-align: center;
     margin-top: 45px;
-
+    cursor: pointer;
 }

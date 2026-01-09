@@ -1,4 +1,4 @@
-// clearDbScript.js
+//clearDbScript.js
 
 import mongoose from 'mongoose';
 import 'dotenv/config'; // Завантажує змінні середовища з .env

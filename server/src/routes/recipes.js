@@ -1,13 +1,12 @@
 import express from "express";
 import Recipe from "../models/Recipe2.js";
-import auth from "../middleware/auth.js"; // <-- НОВИЙ ІМПОРТ
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-// 1. Додати рецепт (ПОТРІБНА АВТЕНТИФІКАЦІЯ)
 router.post("/", auth, async (req, res) => {
     try {
-        // Автоматично додаємо userId з токена до рецепту
+        // Автоматичне додавання userId з токена до рецепту
         const recipeData = {
             ...req.body,
             userId: req.userId
@@ -20,7 +19,7 @@ router.post("/", auth, async (req, res) => {
     }
 });
 
-// 2. Отримати всі рецепти (ДОСТУПНО ВСІМ)
+// Отримати всі рецепти 
 router.get("/", async (req, res) => {
     try {
         const recipes = await Recipe.find();
@@ -30,10 +29,9 @@ router.get("/", async (req, res) => {
     }
 });
 
-// 3. Отримати ВЛАСНІ рецепти користувача (ПОТРІБНА АВТЕНТИФІКАЦІЯ)
+// Власні рецепти користувача
 router.get("/my-recipes", auth, async (req, res) => {
     try {
-        // Фільтруємо за userId, який ми отримали з токена
         const myRecipes = await Recipe.find({ userId: req.userId });
         res.json(myRecipes);
     } catch (error) {

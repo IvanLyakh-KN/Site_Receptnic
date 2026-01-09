@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    margin-bottom: 35px;
 }
 
 .search__block input {
@@ -20,17 +21,17 @@
     position: absolute;
     left: 5px;
     background: url('../../asset/images/search-Icon.svg');
-    background-size:contain;
+    background-size: contain;
     background-repeat: no-repeat;
     height: 35px;
-    width: 44px;
+    width: 45px;
 }
 
 .search__button {
     cursor: pointer;
     color: white;
     margin: -5px;
-    height: 48px;
+    height: 47px;
     padding: 0 10px;
     border-radius: 0 5px 5px 0;
 }

@@ -5,13 +5,11 @@ import { useAuth } from '../../AuthContext.js'; // <-- ВАЖЛИВО: Шлях 
 import './authForm.css';
 
 const AuthForm = ({ isLoginMode, setIsLoginMode }) => {
-    // 1. ВИПРАВЛЕНО: Змінна стану названа inputLogin, щоб уникнути конфлікту
     const [inputLogin, setInputLogin] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    // Функція входу з AuthContext
     const { login } = useAuth();
     const history = useHistory();
 
@@ -20,7 +18,6 @@ const AuthForm = ({ isLoginMode, setIsLoginMode }) => {
         setError(null);
         setIsLoading(true);
 
-        // Змінна login тут використовується для запиту, як вимагає ваш бекенд
         const payload = { login: inputLogin, password };
 
         const url = `http://localhost:5000/auth/${isLoginMode ? 'login' : 'register'}`;
@@ -30,10 +27,10 @@ const AuthForm = ({ isLoginMode, setIsLoginMode }) => {
 
             const { token, user } = response.data;
 
-            // Зберігаємо токен та login у контексті/localStorage
+            // Зберігання токену та login у контексті/localStorage
             login(token, user.login);
 
-            // Перенаправляємо на головну сторінку
+            // Перенаправлення на головну сторінку
             history.push('/');
 
         } catch (err) {
@@ -54,22 +51,20 @@ const AuthForm = ({ isLoginMode, setIsLoginMode }) => {
     return (
         <form className="auth-form" onSubmit={handleSubmit}>
             <div className="auth-form__title">
-                {/* Динамічний заголовок */}
                 <p>{isLoginMode ? 'Увійти' : 'Створити акаунт'}</p>
             </div>
-            {error && <div className="auth-form__error">{error}</div>} {/* Повідомлення про помилку */}
+            {error && <div className="auth-form__error">{error}</div>}
 
             <div className="auth-form__inputs">
                 {/* Поле Вхід/ */}
                 <input
-                    type="text" // Тип залишаємо text, оскільки ви хочете відображати "login"
+                    type="text"
                     className="auth-form__input"
-                    placeholder="Логін:" // Змінено для користувача
+                    placeholder="Логін:"
                     value={inputLogin}
-                    onChange={(e) => setInputLogin(e.target.value)} // ВИКОРИСТОВУЄМО setInputLogin
+                    onChange={(e) => setInputLogin(e.target.value)}
                     required
                 />
-                {/* Поле Пароль */}
                 <input
                     className="auth-form__input"
                     type="password"
@@ -79,13 +74,11 @@ const AuthForm = ({ isLoginMode, setIsLoginMode }) => {
                     required
                 />
                 <div className="auth-form__inputs_checkbox">
-                    {/* Запам'ятовування користувача */}
                     <input type="checkbox" className="input_checkbox" id="rememberMe" name="rememberMe" value="yes" />
                     <label htmlFor="rememberMe">Запам'ятати мене</label>
                 </div>
             </div>
 
-            {/* Кнопка відправки форми */}
             <button
                 type="submit"
                 disabled={isLoading}

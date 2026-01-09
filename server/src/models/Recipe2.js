@@ -12,10 +12,9 @@ const RecipeSchema = new mongoose.Schema({
     rate: Number,
     key: Number,
     myRecipe: Boolean,
-    // ДОДАТИ ЦЕ ПОЛЕ:
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User", // Посилання на модель користувача
+        ref: "User",
         required: true
     },
     savedByUsers: {
