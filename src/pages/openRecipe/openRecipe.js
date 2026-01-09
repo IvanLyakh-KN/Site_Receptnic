@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import './openRecipe.css';
 
@@ -37,7 +37,6 @@ const RecipePage = () => {
                 <img src={imgSrc} alt={name} />
                 <div className="recipeView__back">
                     <span className="recipeView__rowBack"></span>
-                    <Link to="/"><p>Назад</p></Link>
                 </div>
             </div>
             <div className="recipeView__text-body">

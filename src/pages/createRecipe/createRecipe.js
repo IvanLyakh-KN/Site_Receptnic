@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
 import usePostRecipe from '../../hooks/usePostRecipe.js';
 import './createRecipe.css';
 
@@ -134,7 +133,6 @@ const CreateRecipe = () => {
                     onChange={(e) => setImgSrc(e.target.value)}
                     placeholder="Введіть URL зображення"
                 />
-                <Link to='/my-recipes'><button className="submit-btn" onClick={() => handleSubmit()}>Готово</button></Link>
             </div>
         </section >
     );
