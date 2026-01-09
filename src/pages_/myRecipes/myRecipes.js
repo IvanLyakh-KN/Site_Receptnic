@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Recipes from "../../components/recipe/recipe";
+import Recipes from "../../components_/recipe/recipe";
 import { Link } from 'react-router-dom';
 import './myRecipes.css';
-import Button from "../../components/button/button";
+import Button from "../../components_/button/button";
 import { useAuth } from "../../AuthContext";
 
 const MyRecipes = () => {

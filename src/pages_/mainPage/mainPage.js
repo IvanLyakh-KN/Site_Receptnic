@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import './mainPage.css';
-import Search from "../../components/searchInput/search";
-import Recipes from '../../components/recipe/recipe';
-import Button from "../../components/button/button";
+import Search from "../../components_/searchInput/search";
+import Recipes from '../../components_/recipe/recipe';
+import Button from "../../components_/button/button";
 
 const MainPage = ({ recipesDb }) => {
     // Стан для пошукового запиту
