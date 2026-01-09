@@ -1,9 +1,8 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import { AuthProvider, useAuth } from './AuthContext.js';
+import { AuthProvider, useAuth } from './AuthContext.js'; // <-- ІМПОРТУЄМО useAuth
 import useFetch from './hooks/useFetch';
-import { useEffect } from 'react';
 
 import MainPage from './pages/mainPage/mainPage';
 import AuthPage from './pages/AuthPage/authPage';
@@ -12,24 +11,20 @@ import MyRecipes from './pages/myRecipes/myRecipes';
 import Navigation from './components/navigation/navigation';
 import CreateRecipe from './pages/createRecipe/createRecipe';
 
-
-const MyPage = () => {
-    useEffect(() => {
-        document.title = "Сайт Рецептник";
-    }, []);
-}
-
+// Компонент, який обгортає логіку автентифікації
 const AppContent = ({ recipesDb, isLoading, error }) => {
     const { authLoading, isLoggedIn } = useAuth();
 
+    // 1. Початкове завантаження (перевірка токена в localStorage)
     if (authLoading) {
         return (
             <div className="wrapper loading-screen">
-                <h2>Перевірка сесії...</h2>
+                <h2>Перевірка сесії... 🧐</h2>
             </div>
         );
     }
 
+    // 2. Завантаження рецептів
     if (isLoading) {
         return (
             <div className="wrapper loading-screen">
@@ -38,6 +33,7 @@ const AppContent = ({ recipesDb, isLoading, error }) => {
         );
     }
 
+    // 3. Помилка завантаження
     if (error) {
         return (
             <div className="wrapper error-screen">
@@ -47,12 +43,12 @@ const AppContent = ({ recipesDb, isLoading, error }) => {
         );
     }
 
+    // Переконуємося, що recipes є масивом
     const allRecipes = recipesDb || [];
-    MyPage();
 
     return (
         <div className="wrapper">
-            {/* Navigation скрізь, окрім сторінки авторизації */}
+            {/* Navigation показуємо скрізь, окрім сторінки авторизації */}
             <Route exact path={["/", "/my-recipes", "/recipe/:id", "/create-recipe"]}>
                 <Navigation />
             </Route>
@@ -74,8 +70,14 @@ const AppContent = ({ recipesDb, isLoading, error }) => {
                         <RecipePage recipesDb={allRecipes} />
                     </Route>
 
+                    {/* МОЇ РЕЦЕПТИ (Потрібна додаткова логіка: або перенаправлення на AuthPage, або запит my-recipes) */}
                     <Route path="/my-recipes">
-                        <MyRecipes />
+                        {/* У цьому місці логіка ускладнюється, оскільки my-recipes
+                            повинен отримувати дані з іншого ендпоінту: /recipes/my-recipes.
+                            Для спрощення: показуємо компонент, а компонент MyRecipes 
+                            сам вирішить, як отримати потрібні дані.
+                        */}
+                        <MyRecipes recipes={allRecipes} />
                     </Route>
 
                     {/* СТОРІНКА СТВОРЕННЯ РЕЦЕПТА */}
@@ -90,6 +92,8 @@ const AppContent = ({ recipesDb, isLoading, error }) => {
 
 
 function App() {
+    // Використовуємо useFetch для отримання ВСІХ рецептів 
+    // (потрібно оновити логіку, щоб MyRecipes використовував свій useFetch)
     const {
         data: recipes,
         isLoading,

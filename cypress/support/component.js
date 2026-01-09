@@ -1,12 +1,26 @@
-// Імпорт стилів (якщо є глобальні стилі, наприклад index.css або App.css)
+// ***********************************************************
+// This example support/component.js is processed and
+// loaded automatically before your test files.
+//
+// This is a great place to put global configuration and
+// behavior that modifies Cypress.
+//
+// You can change the location of this file or turn off
+// automatically serving support files with the
+// 'supportFile' configuration option.
+//
+// You can read more here:
+// https://on.cypress.io/configuration
+// ***********************************************************
+
+// Import commands.js using ES2015 syntax:
 import './commands'
-// Якщо у вас є глобальні стилі у проекті, розкоментуйте та вкажіть шлях:
-// import '../../src/index.css' 
 
-// Імпорт підтримки code coverage
-import '@cypress/code-coverage/support'
-
-// ВАЖЛИВО: Використовуйте 'cypress/react' замість 'cypress/react18'
-import { mount } from 'cypress/react'
+// Alternatively you can use CommonJS syntax:
+// require('./commands')
+import { mount } from 'cypress/react18'
 
 Cypress.Commands.add('mount', mount)
+
+// Example use:
+// cy.mount(<MyComponent />)

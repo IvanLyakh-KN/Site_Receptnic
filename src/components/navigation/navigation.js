@@ -1,15 +1,17 @@
+// src/components/Navigation.js
+
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom'; // Додано useNavigate
 import { useAuth } from '../../AuthContext.js';
 
 import './navigation.css';
 
 const Navigation = () => {
-    const { userlogin, isLoggedIn, logout } = useAuth();
+    const { userEmail, isLoggedIn, logout } = useAuth(); // <-- Використовуємо хук
     const history = useHistory();
 
     const handleLogout = () => {
-        logout();
+        logout(); // Очищуємо стан і localStorage
         history.push('/authorization');
     };
 
@@ -17,8 +19,9 @@ const Navigation = () => {
         <div className="navigation">
             <nav className="navigationNav container">
                 <div className="navigationUserName">
+                    {/* Відображаємо email, якщо користувач увійшов, інакше - загальне привітання */}
                     {isLoggedIn ? (
-                        <a href='#'>{userlogin}</a>
+                        <a href='#'>{userEmail}</a>
                     ) : (
                         <a href='#'>Гість</a>
                     )}
@@ -29,7 +32,7 @@ const Navigation = () => {
                         <Link to='/'>Головна</Link>
                     </li>
 
-                    {/* "Мої рецепти" лише авторизованим */}
+                    {/* Посилання "Мої рецепти" показуємо лише авторизованим */}
                     {isLoggedIn && (
                         <li className="navigation__link">
                             <Link to="/my-recipes">Мої рецепти</Link>
@@ -38,11 +41,12 @@ const Navigation = () => {
 
                     <li className="navigation__link">
                         {isLoggedIn ? (
-                            // "Вийти" для авторизованого
+                            // Кнопка "Вийти" для авторизованого
                             <button onClick={handleLogout} className="navigation__logout-btn">
                                 Вийти
                             </button>
                         ) : (
+                            // Посилання на сторінку входу для неавторизованого
                             <Link to="/authorization">Увійти</Link>
                         )}
                     </li>

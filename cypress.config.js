@@ -1,52 +1,27 @@
 const { defineConfig } = require("cypress");
+const webpackConfig = require("./config/webpack.cypress.config");
 
 module.exports = defineConfig({
   component: {
     devServer: {
       framework: "react",
       bundler: "webpack",
-
-      webpackConfig: {
-        mode: 'development',
-        devtool: 'eval-source-map',
-        module: {
-          rules: [
-            {
-              test: /\.css$/,
-              use: ['style-loader', 'css-loader'],
-            },
-            {
-              test: /\.(js|jsx|mjs|ts|tsx)$/,
-              exclude: /node_modules/,
-              use: {
-                loader: 'babel-loader',
-                options: {
-                  presets: [
-                    '@babel/preset-env',
-                    ['@babel/preset-react', { runtime: 'automatic' }]
-                  ],
-                  plugins: ['istanbul'],
-                },
-              },
-            },
-            {
-              test: /\.(png|jpe?g|gif|svg)$/i,
-              type: 'asset/resource',
-            },
-          ],
-        },
-      },
+      webpackConfig, // webpackConfig: webpackConfig
     },
     setupNodeEvents(on, config) {
+      // component testing node events setup code
+      // https://docs.cypress.io/guides/tooling/code-coverage
       require('@cypress/code-coverage/task')(on, config);
+
+      on('file:preprocessor', require('@cypress/code-coverage/use-babelrc'));
+
       return config;
     },
   },
+
   e2e: {
-    baseUrl: 'http://localhost:3000',
     setupNodeEvents(on, config) {
-      require('@cypress/code-coverage/task')(on, config);
-      return config;
+      // implement node event listeners here
     },
   },
 });

@@ -83,7 +83,3 @@ a {
     text-decoration: none;
     color: white;
 }
-
-.recipe__img img {
-    object-fit: cover;
-}

@@ -1,38 +1,46 @@
+// src/context/AuthContext.js
+
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
+// Створюємо Context
 export const AuthContext = createContext();
 
+// Створюємо Провайдер, який обгорне ваш додаток
 export const AuthProvider = ({ children }) => {
+    // Стан для токена і даних користувача
     const [authToken, setAuthToken] = useState(null);
-    const [userlogin, setUserlogin] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
 
+    // 1. Ініціалізація: Перевіряємо localStorage при завантаженні
     useEffect(() => {
         const token = localStorage.getItem('token');
-        const login = localStorage.getItem('userlogin');
-        if (token && login) {
+        const email = localStorage.getItem('userEmail');
+        if (token && email) {
             setAuthToken(token);
-            setUserlogin(login);
+            setUserEmail(email);
         }
     }, []);
 
-    const login = (token, login) => {
+    // 2. Функція для Входу
+    const login = (token, email) => {
         localStorage.setItem('token', token);
-        localStorage.setItem('userlogin', login);
+        localStorage.setItem('userEmail', email);
         setAuthToken(token);
-        setUserlogin(login);
+        setUserEmail(email);
     };
 
+    // 3. Функція для Виходу
     const logout = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('userlogin');
+        localStorage.removeItem('userEmail');
         setAuthToken(null);
-        setUserlogin(null);
+        setUserEmail(null);
     };
 
-    // Значення, які будуть доступні всім компонентам
+    // 4. Значення, які будуть доступні всім компонентам
     const value = {
         authToken,
-        userlogin,
+        userEmail,
         isLoggedIn: !!authToken,
         login,
         logout
@@ -45,6 +53,7 @@ export const AuthProvider = ({ children }) => {
     );
 };
 
+// Хук для спрощеного використання контексту
 export const useAuth = () => {
     return useContext(AuthContext);
 };
