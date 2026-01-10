@@ -1,0 +1,38 @@
+.navigationNav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.navigationUl {
+    display: flex;
+}
+
+.navigationUl li {
+    padding-left: 40px;
+}
+
+.navigationUl {
+    align-items: center;
+}
+
+.navigationUl li a,
+.navigationUserName a {
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    font-weight: 400;
+    transition: font-weight 0.3s;
+}
+
+.activePage {
+    font-weight: 900;
+}
+
+.navigation__logout-btn {
+    background: transparent;
+    color: white;
+    font-size: 30px;
+    margin-top: 0px;
+    font-weight: 400;
+}
