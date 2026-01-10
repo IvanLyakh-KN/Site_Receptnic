@@ -3,7 +3,7 @@ import AuthForm from './authForm'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthContext } from '../../AuthContext'
 describe('<AuthForm />', () => {
-  it('renders correctly', () => {
+  it('рендер', () => {
     const mockAuthValue = {
       login: cy.spy().as('loginSpy'),
       logout: cy.spy(),
