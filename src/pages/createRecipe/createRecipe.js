@@ -64,10 +64,6 @@ const CreateRecipe = () => {
     };
     return (
         <section className='container create-recipe'>
-            <div className="addRecipeImg">
-                <p>Додати зображення страви *обов’язково</p>
-                <span className="myRecipes__plusIcon"></span>
-            </div>
             <div className="createRecipe__body">
                 <label>Введіть назву страви *обов’язково:</label>
                 <input
