@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/navigation/navigation.js</title>
+    <title>Code coverage report for src/components/recipe/recipe.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/navigation</a> navigation.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/recipe</a> recipe.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/7</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
-                <span class="quiet">Functions</span>
+                <span class="quiet">Branches</span>
                 <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">80% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>4/5</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -117,8 +117,8 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,7 +129,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
@@ -166,73 +173,69 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../AuthContext.js';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import "./recipe.css";
+import { Link } from "react-router-dom";
 &nbsp;
-import './navigation.css';
 &nbsp;
-const Navigation = () =&gt; {
-    const { userlogin, isLoggedIn, logout } = useAuth();
-    const history = useHistory();
+const Recipes = ({ recipes }) =&gt; {
+    return recipes.map((recipe, index) =&gt; {
+        const { imgSrc, name, tags, cookingTime, rate, key } = recipe;
 &nbsp;
-    const handleLogout = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >        logout();</span>
-<span class="cstat-no" title="statement not covered" >        history.push('/authorization');</span>
-    };
+        const recipeTags = Array.isArray(tags) ? <span class="branch-0 cbranch-no" title="branch not covered" >tags.map(<span class="fstat-no" title="function not covered" >(t</span>ag, tagIndex) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >            &lt;p className="recipe__tag" key={tagIndex}&gt;{tag}&lt;/p&gt;</span>
+        )) : null;
 &nbsp;
-    return (
-        &lt;div className="navigation"&gt;
-            &lt;nav className="navigationNav container"&gt;
-                &lt;div className="navigationUserName"&gt;
-                    {isLoggedIn ? (
-                        &lt;a href='#'&gt;{userlogin}&lt;/a&gt;
-                    ) : (
-                        &lt;a href='#'&gt;Гість&lt;/a&gt;
-                    )}
+        function rateRecipe(rate) {
+            return Array.from({ length: 5 }, (_, i) =&gt; (
+                &lt;div className="recipe__rateStar" key={i}&gt;
+                    &lt;img src={"https://cdn-icons-png.flaticon.com/128/6869/6869563.png"} alt="star" /&gt;
                 &lt;/div&gt;
+            ));
+        }
 &nbsp;
-                &lt;ul className="navigationUl"&gt;
-                    &lt;li className="navigation__link"&gt;
-                        &lt;Link to='/'&gt;Головна&lt;/Link&gt;
-                    &lt;/li&gt;
+        return (
+            &lt;&gt;
+                &lt;div className="recipe"&gt;
+                    &lt;div className="recipe__img"&gt;
+                        &lt;img src={imgSrc} alt={name} /&gt;
+                    &lt;/div&gt;
+                    &lt;Link
+                        key={key}
+                        to={`/recipe/${index}`}
+                    &gt;
+                        &lt;div className="recipe__titleAndTags"&gt;
+                            &lt;div className="recipe__title"&gt;
+                                &lt;p className="recipe__title"&gt;{name}&lt;/p&gt;
+                            &lt;/div&gt;
+                            &lt;div className="recipe__tags"&gt;
+                                {recipeTags}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/Link&gt;
+                    &lt;div className="recipe__cookingTime"&gt;
+                        &lt;p&gt;Час приготування:&lt;/p&gt;
+                        &lt;p&gt;~ {cookingTime} хв&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div className="recipe__rate"&gt;
+                        &lt;p&gt;Рейтинг:&lt;/p&gt;
+                        {rateRecipe(rate)}
+                    &lt;/div&gt;
+                &lt;/div &gt;
+            &lt;/&gt;
+        );
+    });
+};
 &nbsp;
-                    {/* "Мої рецепти" лише авторизованим */}
-                    {isLoggedIn &amp;&amp; (
-                        &lt;li className="navigation__link"&gt;
-                            &lt;Link to="/my-recipes"&gt;Мої рецепти&lt;/Link&gt;
-                        &lt;/li&gt;
-                    )}
-&nbsp;
-                    &lt;li className="navigation__link"&gt;
-                        {isLoggedIn ? (
-                            // "Вийти" для авторизованого
-                            &lt;button onClick={handleLogout} className="navigation__logout-btn"&gt;
-                                Вийти
-                            &lt;/button&gt;
-                        ) : (
-                            &lt;Link to="/authorization"&gt;Увійти&lt;/Link&gt;
-                        )}
-                    &lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/nav&gt;
-        &lt;/div&gt;
-    );
-}
-&nbsp;
-export default Navigation;</pre></td></tr></table></pre>
+export default Recipes;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-01-10T21:07:22.916Z
+                at 2026-01-10T21:21:50.645Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
