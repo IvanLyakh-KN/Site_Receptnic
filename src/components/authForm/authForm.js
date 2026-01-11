@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../../AuthContext.js'; // <-- ВАЖЛИВО: Шлях має бути правильним!
+import { useAuth } from '../../AuthContext.js';
 import './authForm.css';
 
 const AuthForm = ({ isLoginMode, setIsLoginMode }) => {

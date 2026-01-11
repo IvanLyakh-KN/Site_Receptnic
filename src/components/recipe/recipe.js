@@ -5,11 +5,7 @@ import { Link } from "react-router-dom";
 
 const Recipes = ({ recipes }) => {
     return recipes.map((recipe, index) => {
-        const { imgSrc, name, tags, cookingTime, rate, key } = recipe;
-
-        const recipeTags = Array.isArray(tags) ? tags.map((tag, tagIndex) => (
-            <p className="recipe__tag" key={tagIndex}>{tag}</p>
-        )) : null;
+        const { imgSrc, name, cookingTime, rate, key } = recipe;
 
         function rateRecipe(rate) {
             return Array.from({ length: 5 }, (_, i) => (
@@ -32,9 +28,6 @@ const Recipes = ({ recipes }) => {
                         <div className="recipe__titleAndTags">
                             <div className="recipe__title">
                                 <p className="recipe__title">{name}</p>
-                            </div>
-                            <div className="recipe__tags">
-                                {recipeTags}
                             </div>
                         </div>
                     </Link>
