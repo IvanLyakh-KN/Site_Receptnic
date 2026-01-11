@@ -1,0 +1,101 @@
+.recipe {
+    background-image: url('../../asset/images/recipe-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 250px;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.recipe__img img {
+    width: 300px;
+    height: 210px;
+    margin: 20px 15px 20px 20px;
+    border-radius: 5px;
+}
+
+.recipe__titleAndTags {
+    padding: 20px 40px 0 0;
+    max-width: 350px;
+}
+
+.recipe__title {
+    font-size: 36px;
+    width: 300px;
+    text-align: center;
+}
+
+.recipe__tags {
+    font-size: 16px;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.recipe__tag {
+    background-color: #33535F;
+    border-radius: 50px;
+    padding: 5px 10px;
+    margin: 10px 5px;
+
+}
+
+.recipe__cookingTime {
+    background-color: #545454;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
+    /* font-size: 16px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
+    padding: 10px;
+}
+
+.recipe__rate {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 24px;
+    gap: 10px
+}
+
+.recipe__rateStar img {
+    height: 30px;
+}
+
+.addRecipe {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background-color: #30A663;
+    font-size: 18px;
+    border-radius: 0px 10px 10px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.addRecipe__img {
+    margin-top: 10px;
+    background: url('../../asset/images/bookmark-icon.svg');
+    height: 64px;
+    width: 64px;
+}
+
+.recipe:hover .addRecipe {
+    display: flex;
+}

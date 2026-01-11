@@ -1,0 +1,72 @@
+.create-recipe {
+    background-color: rgb(255, 255, 255, 0.2);
+    min-height: 100vh;
+    height: auto;
+    font-size: 24px;
+    line-height: 140%;
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+
+.addRecipeImg {
+    height: 650px;
+    width: 35%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(214, 214, 214, 0.4);
+    position: relative;
+    cursor: pointer;
+}
+
+.addRecipeImg .myRecipes__plusIcon {
+    top: 55%;
+    left: 45%;
+    transform: translateX(-45%);
+}
+
+.createRecipe__body {
+    width: 65%;
+    padding: 35px 25px 0 25px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.create-recipe label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.create-recipe input,
+.create-recipe textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    padding: 5px 0;
+    outline: none;
+    color: #ffffff;
+    font-size: 16px;
+    min-width: 65%;
+    min-height: 50px;
+}
+
+.create-recipe input::placeholder {
+    color: rgba(160, 160, 160, 0.5);
+}
+
+button {
+    margin-top: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
